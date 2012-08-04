@@ -9,7 +9,7 @@ DEBUG = False
 
 # The opposite of EXCLUDE_FILE_SUFFIX. This **only** includes files that match a given suffix.
 # type: tuple
-# default: None
+# default: None to index everything
 INCLUDE_FILE_SUFFIX = (
     '.m',
     '.c',
