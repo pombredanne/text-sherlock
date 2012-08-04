@@ -1,3 +1,4 @@
+# encoding: utf-8
 """ 
 base.py
 Created by: Christopher Bess
@@ -36,13 +37,6 @@ class FileIndexer(object):
         """
         pass
 
-    def has_file_updated(self, filepath):
-        """Determines if the specified file can be indexed. By default it checks the indexer database to see
-        if the target file has been updated after it was stored (if storea at all).
-        :return: tuple (file_is_updated, db_record)
-        """
-        return db.is_file_updated(filepath, update_db=True)
-
     def index_file(self, filepath, *args, **kwargs):
         """Indexes and stores the file at the specified path
         """
@@ -63,6 +57,13 @@ class FileIndexer(object):
         """Cleans the index by purging any documents that no longer exist.
         """
         raise NotImplementedError
+
+    def has_file_updated(self, filepath):
+        """Determines if the specified file can be indexed. By default it checks the indexer database to see
+        if the target file has been updated after it was stored (if stored at all).
+        :return: tuple (file_is_updated, db_record)
+        """
+        return db.is_file_updated(filepath, update_db=True)
 
     def file_meta_exists(self, filepath):
         """Returns True if the specified filepath has meta data in the index database.
